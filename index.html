@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/master.css">
+</head>
+<body>
+    <h1>.NET (Network Enabled Technologies)</h1>
+    <p><i>available in <b>C:\Windows\Microsoft.NET\Framework64\v4.x.x</b></i></p>
+    <ul>
+        <li>a development & execution environment</li>
+        <li>supports Object oriented languages #C, F#, VisualBasic, Visual C++</li>
+        <li>features: Inter-operability, cross platform, baseclass library, lang independence, easy deployment, security</li>
+        <img src="./assets/framework.png" alt="framework structure">
+        <br>
+        <img src="./assets/netstack.png" alt=".net frameworks stack">
+    </ul>
+    <h1>COMPONENTS OF .NET FRAMEWORK</h1>
+    <ol>
+        <li>CLR - Common Language Runtime</li>
+        <li>.NET framework class library</li>
+        <li>CTS - Common Type System</li>
+        <li>CLS - Common Language Specification</li>
+        <li>Assemblies</li>
+        <li>Windows Forms</li>
+        <li>ASP.NET - Active Server Pages</li>
+        <li>ADO.NET - Activex Data Objects</li>
+        <li>WWF - Windows Workflow Foundation</li>
+        <li>WPF - Windows Presentation Foundation</li>
+        <li>WCF - Windows Communication Foundation</li>
+        <li>Windows Cardspace</li>
+        <li>LInQ - Language Integrated Query</li>
+        <li>Parallel Programming</li>
+    </ol>
+    <h1>CLR - Common Language Runtime</h1>
+    <img src="./assets/clr_execution.jpg" alt="CLR flowchart">
+    <ul>
+        <li>reponsible for allocating and deallocating memory for programs in runtime</li>
+        <li>any code managed by CLR is called <span>Managed Code</span></li>
+        <li>1. Language compilers produces <span>MSIL(microsoft intermediate lang) code</span> from src code</li>
+        <li>2. CLR's JustInTime compiler converts these MSIL code into <span>Native Code</span></li>
+    </ul>
+    <h1>BCL - Base Class Library/ .NET framework Class Library</h1>
+    <ul>
+        <li>provides predefined classes common for all the languages those supported by .NET</li>
+        <li>need to use the SYNTAX corrosponding to the Classes</li>
+    </ul>
+    <h1>CTS - Common Type System</h1>
+    <ul>
+        <li>set of datatypes common to the .net supported languages</li>
+        <li>facilitates inter language communication</li>
+        <li>Ex: in C#, int a=10 <br>in VB Integer a=10 <br>by using CTS, System.Int32 a=10</li>
+        <li>System.Int64 <br>System.Double</li>
+    </ul>
+    <h1>CLS - Common Language Specification</h1>
+    <ul>
+        <li>subset of CTS</li>
+        <li>provides set of rules to be followed by all lang compilers targetting CLR</li>
+        <li>to ensure cross language communication</li>
+        <li>ex: local variables must be initialized <br>abstract classes can't be instantiated <br>instance members must be only accessed through objects</li>
+    </ul>
+    <h1>Assemblies</h1>
+    <ul>
+        <li><span>Compiled code</span> ready for deployment with a version</li>
+        <li>.exe(executable) or .dll(reusable)</li>
+        <li>collection of datatypes & resources as a functional unit</li>
+        <li>contains: <br>assembly metadata <br>type metadata <br>MSIL code <br>resources</li>
+        <li>types: <span>Private & Shared</span></li>
+        <li>Private: specific to an application, may not contain a strong name</li>
+        <li>Shared: resides in GAC, should contain a strong name</li>
+    </ul>
+    <h1>GAC - Global Assembly Cache</h1>
+    <ul>
+        <li>System.dll resides in <i>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\System\v4.x.x</i></li>
+        <li>gacutil.exe is used to add/remove dll files to/from GAC</li>
+    </ul>
+    <h1>Available IDEs</h1>
+    <ul>
+        <li>Visual Studio</li>
+        <li>Adobe Dreamweaver</li>
+        <li>Frontpage</li>
+        <li>Eclipse, Jbuilder, Intellij for JAVA apps</li>
+    </ul>
+    <h1>Visual Studio Overview</h1>
+    <ul>
+        <li>for developing web-based, windows-based, console apps</li>
+        <li>features: multi-monitor support <br>
+            code editor <br>
+            search as you type <br>
+            call hierarchy(navigate the code as the control flows) <br>
+            debugging <br>
+            IDE features corrospond to current project(adding reference will link the compatible libraries to the version .net framework in use) <br>
+            easy deployment <br>
+            extension manager <br>
+            code generation & text templates <br>
+            help window <br>
+        </li>
+    </ul>
+    <h1>C# Features</h1>
+    <ol>
+        <li>object oriented</li>
+        <li>type safe</li>
+        <li>versionale</li>
+        <li>Inter-operability</li>
+        <li>multi threaded</li>
+    </ol>
+    <h1>C# src file structure</h1>
+    <b><i>using statement; <br>
+        namespace declaration; <br>
+        class declaration
+    </i></b>
+    <h1>Comments</h1>
+    <ol>
+        <li>single line //</li>
+        <li>multi line /* ..... */</li>
+        <li>Documentation comments ///</li>
+    </ol>
+    <h1>Class</h1>
+    <p>fundamental unit of a C# program, allows us to create a custom datatype by grouping variables & functions</p>
+    <p>program execution starts from Main() method & "String[] args" can be passed as command line arguments to Main()</p>
+    <h2>Statement</h2>
+    <p>unit of work that has be terminated by ";"</p>
+    <h1>NameSpace</h1>
+    <ul>
+        <li>group of logically related classes</li>
+        <li>reduces name collisions</li>
+        <li>within a namespace we can declare one or more </li>
+        <ol>
+            <li>classes</li>
+            <li>interfaces</li>
+            <li>delegates</li>
+            <li>structs</li>
+            <li>enums</li>
+            <li>namespaces</li>
+        </ol>
+        <li><code>namespace MyNameSpace{ <br>
+            class MyClass{ <br>
+                //variables; <br>
+                //methods; <br>
+            }
+            }</code>
+        </li>
+        <li>MyClass can be accessed as "MyNameSpace.Myclass"</li>
+    </ul>
+    <h1>Keywords</h1>
+    <ul>
+        <li>reserved words that convey a specific meaning to the compiler</li>
+        <li>can be used as Identifiers if we prefix @ to the keyword</li>
+        <li>switch is not a valid identifier</li>
+        <li>@switch can be used as an identifier</li>
+        <li><span>Contextual keywords are Keywords but not reserved, and they convey a specific meaning in a limited program context</span></li>
+        <li>newly created keywords are added to Contextual keywords</li>
+    </ul>
+    <h1>Identifiers</h1>
+    <i>names given to the componenents in a program (variables, methods, classes etc.)</i>
+    <h1>Literals</h1>
+    <i>values stored in variables</i>
+    <ol>
+        <li>Numeric (integer, floating)</li>
+        <li>character (single character, strings)</li>
+        <li>booleans</li>
+    </ol>
+    <h1>Constants</h1>
+    <i>variables whose values can't be changed during program execution</i>
+    <i>const double pi=3.14</i>
+    <h2>Variables</h2>
+    <i>name given to a memory location</i>
+    <h2>Data types</h2>
+    <i>tells the type of data present in a variable</i>
+    <i>value types(int, double, etc.) & reference types (arrays, strings, etc.)</i>
+    <h1>Value types</h1>
+    <li>stores the data directly in the stack memory</li>
+    <h2>Integral types</h2>
+        <i><b>Integer types</b></i>
+        <ol>
+            <li>char - 2Bytes (Unicode)</li>
+            <li>byte - 1B</li>
+            <li>sbyte - 1B</li>
+            <li>short - 2B</li>
+            <li>ushort - 2B</li>
+            <li>int - 4B</li>
+            <li>uint - 4B</li>
+            <li>long - 8B</li>
+            <li>ulong - 8B</li> 
+        </ol>
+        <i><b>Floating point types</b></i>
+        <ol>
+            <li>float - 4B (7 decimal points)</li>
+            <li>double - 8B (15-16 decimal points)</li>
+        </ol>
+        <i><b>Decimal type</b></i>
+        <li>High precision floating point numbers - 16B (28-29 decimal points)</li>
+        <i><b>Booleans (true, false)</b></i>
+        <i><b>Struct types</b></i>
+        <li>to group multiple data types together</li>
+        <i><b>Enumerations</b></i>
+        <li>group of integer constants</li>
+        <li>gives a name to those integer constants</li>
+        <code>enum MyEnum{ val1, val2, val3, .....}</code>
+        <br>
+    <h1>Reference Types</h1>
+    <li>stores data in Heap memory and stores only the address/reference to the data in stack memory</li>
+    <ol>
+        <li>class</li>
+        <li>interface</li>
+        <li>delegates</li>
+        <li>array</li>
+        <li>string</li>
+        <li>object</li>
+    </ol>
+    <h2>Variable scope</h2>
+    <i>Member variables - declared directly in Class i.e, outside of methods & within the class <br> and accessible by all methods in the class</i>
+    <i><br>Local variables - declared inside a method, hence accessible only inside that method <br>method parameters also comes under local variables</i>
+    
+    <h1>Default values stored in All Data Types</h1>
+    <table border="1px">
+        <tr>
+            <td>All integer types</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>char</td>
+            <td>'\x000'</td>
+        </tr>
+        <tr>
+            <td>float</td>
+            <td>0.0f</td>
+        </tr>
+        <tr>
+            <td>double</td>
+            <td>0.0d</td>
+        </tr>
+        <tr>
+            <td>decimal</td>
+            <td>0.0m</td>
+        </tr>
+        <tr>
+            <td>bool</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>enum</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>all reference types</td>
+            <td>null</td>
+        </tr>
+    </table>
+    <h1>Boxing & Unboxing</h1>
+    <li>Boxing: Value type -> reference type</li>
+    <code>Object obj = 10;</code>
+    <li>Unboxing: Reference type -> value type</li>
+    <code>Object obj = 10;<br>int num = (int) obj;</code>
+    <h1>Type Casting</h1>
+    <li>implicit( done by compiler) - can only convert to a higher data types in the hierarchy </li> 
+    <li>explicit (manually by programmer) - data losses may occur when converting to lower types</li>
+    <h3>Note</h3>
+    <b><span>in switch, we must use break statement because C# don't allow fall-through<br>we can achieve fall-through by using goto statement or leaving a case block emppty </span></b>
+    <h1>Operators</h1>
+    <ol>
+        <li>Unary operators (+, -, ++, --)</li>
+        <li>Arithmetic operators (+, -, *, /, %)</li>
+        <li>String operators (+ concatenates two strings)</li>
+        <li>Relational operators (<, >, <=, >=, ==, !=)</li>
+        <li>Conditional operator ( exp1 ? exp2 : exp3)</li>
+        <li>Logical operators ( !, &&, ||)</li>
+        <li>Binary operators ( and &, or |, xor ^)</li>
+        <li>Assignment operators (=, +=, -=, *=, /=, %=, &=, |=, ^=)</li>
+    </ol>
+    <h1>Flow control & Looping</h1>
+    <ol>
+        <li>if-else <br> if - else if - else</li>
+        <li>for</li>
+        <li>while</li>
+        <li>do-while</li>
+    </ol>
+</body>
+</html>

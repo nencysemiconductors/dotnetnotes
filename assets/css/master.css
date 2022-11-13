@@ -1,0 +1,33 @@
+body{
+    /* background-color: rgba(0, 0, 255, 0.4); */
+    background-color: #3B7197;
+    padding-left: 2%;
+    line-height: 2em;
+    color: white;
+}
+h1, h2{
+    padding-left: 2%;
+    text-decoration: underline;
+    color:aquamarine;
+}
+hr{
+    background-color: chartreuse;
+}
+li{
+    font-size: 20px;
+}
+span{
+    font-size: 1.5em;
+    color: chartreuse;
+}
+img{
+    padding-left: 10%;
+    border-radius: 15px;
+    height:380px;
+}
+b{
+    color: orange;
+}
+table{
+    width: 350px;
+}
