@@ -12,6 +12,7 @@ h1, h2{
 }
 hr{
     background-color: chartreuse;
+    height: 5px;
 }
 li{
     font-size: 20px;
@@ -30,4 +31,7 @@ b{
 }
 table{
     width: 350px;
+}
+code{
+    font-size: 1.3em;
 }
