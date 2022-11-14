@@ -350,5 +350,80 @@
             </code>
         </li>
     </ol>
+    <h1>OOPS features</h1>
+    <ol>
+        <li>Class</li>
+        <li>Object</li>
+        <li>Inheritance</li>
+        <li>Polymorphism</li>
+        <li>Abstraction</li>
+        <li>Encapsulation (binding data with the methods manipulate that data)</li>
+    </ol>
+    <li>class is a blueprint</li>
+    <li>an object has 1. State (identity, attributes, state) 2. Behaviours (methods, events)</li>
+    <li>object is a real world entity made from a blueprint(Class)</li>
+    <h2>Access specifiers</h2>
+    <ol>
+        <li>public - visible everywhere</li>
+        <li>private - only accessible inside the present class</li>
+        <li>internal - only in the current Assembly</li>
+        <li>protected - only accessible in current class & it's child class</li>
+        <li>protected internal - accessible in containing program or assembly & in the child classes</li>
+    </ol>
+    <h2>member modifiers</h2>
+    <ol>
+        <li>new - allows to create a method in child having the same signature as a method in parent</li>
+        <li>abstract - to specify an incomplete componenent</li>
+        <li>static - a member that don't belong to a specific instance, but to the Class</li>
+        <li>readonly - constant fields are assigned during declaration or in constructor</li>
+        <li>sealed - a member that can't be inherited</li>
+        <li>virtual - specifies a method may be overridden in childes</li>
+        <li>override - specifies that childe class provides a new implementation for virtual/abstract method from parent</li>
+    </ol>
+    <h2>Encapsulation</h2>
+    <ul>
+        <li>gives ability to hide data from users</li>
+        <li>implemented using private keywords</li>
+        <li>access to data is controlled using getters & setters</li>
+        <li>properties - class member to write & read data from private data members</li>
+        <code>
+            access_specifier return_type PropName{ <br>
+                get{} <br>
+                set{} <br>
+            } <br>
+            public string EmpName{ <br>
+                get{} <br>
+                set{} <br>
+            }
+        </code>
+        <ol>
+            <li>read only - get</li>
+            <li>write only - set</li>
+            <li>read write - both get & set</li>
+        </ol>
+        <li>Asymmetric properties - using different visibility levels for set & get accessors of a property
+            <br>visibility of set&get should be strict subset of visibility level of the property
+        </li>
+        <li>automatic properties - by default the field will be private</li>
+        <code>public string EmpName{ get; set;}</code>
+    </ul>  
+    <h2>Indexer</h2>
+    <ul>
+        <li>allows an object to be accessed as an array</li>
+        <li>implemented using "this" keyword</li>
+        <code>
+            class MyClass{ <br>
+                public string[] Emps= new string[5]; <br>
+                public string this[int i]{ <br>
+                    get{ return Emps[i]; } <br>
+                    set{ Emps[i] = value; } <br>
+                } <br>
+            } <br>
+            ... <br>
+            MyClass obj= new MyClass(); <br>
+            obj[1]= "ashok"; <br>
+            Console.WriteLine(obj[1]);
+        </code>
+    </ul>
 </body>
 </html>
