@@ -350,6 +350,7 @@
             </code>
         </li>
     </ol>
+    <hr>
     <h1>OOPS features</h1>
     <ol>
         <li>Class</li>
@@ -425,5 +426,101 @@
             Console.WriteLine(obj[1]);
         </code>
     </ul>
+    <h1>Garbage collection</h1>
+    <ul>
+        <li>finalize: Garbage collector(GC) calls finalize() when it finds an object without reference</li>
+        <li>dispose: to explicitly release memory Dispose() should be used from IDisposable interface</li>
+        <li>GC uses internal memory unit called Finalization Queue to maintain a list of objects, at runtime a special thread is used to find unused objects</li>
+    </ul>
+    <hr>
+    <h1>Constructors</h1>
+    <ul>
+        <li>to initialize member variables</li>
+        <li>no return type</li>
+        <li>can be public, private, static</li>
+        <li>Types of Constructors
+            <ol>
+                <li>default: without parameters & used to assign default values to member variables <br>
+                    <code>
+                        Employee(){ <br>
+                            emdId= 0; <br>
+                            empName= null; <br>
+                        }
+                    </code>
+                </li>
+                <li>parameterized</li>
+            </ol>
+        </li>
+    </ul>
+    <hr>
+    <h1>Static (classes, methods, variables, constructors)</h1>
+    <h2>Static variables</h2>
+    <ul>
+        <li>all instances share the copy of the static variable</li>
+    </ul>
+    <h2>Static constructors</h2>
+    called when one of these happens & executes <span>only once</span> in the program life cycle
+    <ol>
+        <li>before 1st instance of a class is created</li>
+        <li>when any static variable is referenced</li>
+        <li>any static method is invoked</li>
+        <li>when 1st object of class is created</li>
+    </ol>
+    <ul>
+        <li>mostly used to initialize static variables before the instances being created</li>
+        <li><span>no access specifiers, return type, parameters</span></li>
+    </ul>
+    <h2>Static methods</h2>
+    <ul>
+        <li>used to access only static variables</li>
+        <li>to perform operations on static variables</li>
+    </ul>
+    <h2>Static classes</h2>
+    <ul>
+        <li>can only contain static variables & static methods</li>
+        <li>do not support inheritance</li>
+        <li>cannot create instances (faster access to members using the class name)</li>
+    </ul>
+    <hr>
+    <h1>Inheritance</h1>
+    <li>allows reuse of characteristics & functionality of another class</li>
+    <li>Types</li>
+    <ol>
+        <li>single - Child : Parent</li>
+        <li>multi-level - Parent:GrandParent, Child : Parent</li>
+        <li>multiple - child: parent1, parent2 (not possible)</li>
+        <li>hierarchical - multiple child extends a single parent <br>child1:Parent child2:Parent child3:Parent</li>
+        <li>hybrid - combination of 2 or more types of inheritances ex. diamond shape (multiple + hierarchical)</li>
+    </ol>
+    <li>constructor chaining: calls the default constructor of parents implicitly(from top-level parent to child)</li>
+    <h1>Exceptions</h1>
+    <ul>
+        <li>System.Exception</li>
+        <ol>
+            <li>SystemException - ArithmeticException, SqlException etc.</li>
+            <li>ApplicationException - custom classes</li>
+        </ol>
+        <li>properties of Exception</li>
+        <ol>
+            <li>Message</li>
+            <li>StackTrace</li>
+            <li>InnerException</li>
+        </ol>
+        <li>Custom Exception</li>
+        <code>
+            public class MyException: ApplicationException{ <br>
+                public MyException(): base(){} <br>
+                public MyException(string message): base(message){} <br>
+            } <br>
+            MyException obj= new MyException("self defined exception"); <br>
+            throw obj;
+        </code>
+    </ul>
+    <hr>
+    <h1>Polymorphism</h1>
+    <ol>
+        <li>early binding/ static/ compile time - achieved using method overloading</li>
+        <li>late binding/ dynamic/ run-time - achieved usign method overriding</li>
+    </ol>
 </body>
 </html>
