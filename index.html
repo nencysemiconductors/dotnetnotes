@@ -522,5 +522,146 @@
         <li>early binding/ static/ compile time - achieved using method overloading</li>
         <li>late binding/ dynamic/ run-time - achieved usign method overriding</li>
     </ol>
+    <hr>
+    <h1>Collections (System.Collections)</h1>
+    <li>group of ordered set of items those can be referred to as single unit</li>
+    <li>features: ordered(stack, queue), sorted(sortedlist), indexed(arraylist), unique(set)</li>
+    <ol>
+        <li>array list-----------IList </li>
+        <li>string collection----IList</li>
+        <li>stack------ICollection</li>
+        <li>queue------ICollection</li>
+        <li>bitarray---ICollection</li>
+        <li>hash map/hash table---IDictionary</li>
+        <li>sortedlist------------IDictionary</li>
+    </ol>
+    collection hierarchy:
+    <ol>
+        <li>list : access elements by index (IList)</li>
+        <li>map : stores elements in (k,v) pairs (IDictionary)</li>
+        <li>custom collections</li>
+    </ol>
+    <code>ArrayList mylst = new ArrayList(--optional argument n--);</code> <br>
+    <li>methods- Add, Remove, RemoveAt, RemoveRange, Reverse, Insert, IndexOf</li>
+    <li>properties- Count, Capacity (n^x, default value of n is 2), </li> <br>
+    <code>StringCollection mySColl = new StringCollection(); <span>//using System.Collections.Specialized</span></code> <br>
+    <br>
+    <h2>IEnumerable (System.Collections)</h2>
+    <ul>
+        <li>interface that provides iteration over a collection</li>
+        <li>GetEnumerator() returns a ref to IEnumerator</li>
+        <li>
+            <code>IEnumerator itr = ( (IEnumerable)myCollection ).GetEnumerator()</code> <br>
+            itr.MoveNext() , itr.Current
+        </li> 
+    </ul>
+    <h2>Maps</h2>
+    <ul>
+        <li>stores data in (k,v) pairs</li>
+        <li>
+            <code>SortedList mylst = new SortedList(); //ascending order based on key</code> <br>
+            <code>Hashtable myhst= new Hashtable(); //ordered based on hash of the key(non-deterministic order)</code>
+        </li>
+        <li>GetKey(), GetByIndex()</li>
+        <li>IDictionaryEnumerator interface is used to iterate over a hashmap</li>
+        <li>DictionaryEntry type can also be used in foreach loop for Hashtable</li>
+    </ul>
+    <h2>Stack & Queue</h2>
+    <h1>Custom Collections</h1>
+    <ol>
+        <li>Extending from "CollectionBase"</li>
+        <li>Extending from "ReadOnlyCollectionBase" - parent members are protected</li>
+    </ol>
+    <h2>collections limitations</h2>
+    <ol>
+        <li>boxing & unboxing of items</li>
+        <li>no compile time checking</li>
+        <li>casting</li>
+    </ol>
+    <hr>
+    <h1>Generics (System.Collections.Generic)</h1>
+    <ul>
+        <li>type-safe code at compile time</li>
+        <li>generic class <br>
+            <code>
+                class MyGenericClass &#60T&#62{ <br>
+                    void Add(T data){} <br>
+                } <br>
+                MyGenericClass&#60int&#62 obj1= new MyGenericClass&#60int&#62(); <br>
+                MyGenericClass&#60string&#62 obj2= new MyGenericClass&#60string&#62();
+            </code>
+        </li>
+        <li>generic method <br>
+            <code>
+                public void GenericMthd &#60T&#62 (T var1, T var 2){ <br>
+                }
+            </code>
+        </li>
+    </ul>
+    <hr>
+    <h1>Delegates (System.Delegate)</h1>
+    <ul>
+        <li>stores addr of 1/more methods with the same signature as delegate</li>
+        <li>method access level should be accesible by the delegate i.e, private delegate can refer to public methods</li>
+        <li>i.e, delegate runs under caller(method) security &not under declarer(delegate) security</li>
+        <li>delegates can be declared 
+            <ol>
+                <li>inside a class as a member variable</li>
+                <li>inside a namespace</li>
+                <li>outside of all classes & namespaces</li>
+            </ol>
+        </li>
+        <li>declaration <br>
+            <code><i>access</i> delegate <i>return_type</i> <i>delegate_name</i>( <i>parameter list</i>); </code> <br>
+            <code>public delegate int AddDlgt(int n, int m);</code>
+        </li>
+        <li>instantiation <br>
+            <code><i>delegate_name</i> varName = new <i>delegate_name</i>(function_name)</code> <br>
+            <code>AddDlgt dlgtVar = new AddDlgt( MyClass.AddNums)</code>
+        </li>
+        <li><span>delegate inference</span> <br>
+            <code>AddDlgt dlgtVar = MyClass.AddNums</code> <br>
+            <p>directly assigning the method name instead of wrapping it in delegate object</p>
+        </li>
+    </ul>
+    <h2>Delegate types</h2>
+    <ol>
+        <li>Single cast</li>
+        <li>multi cast -methods are invoked in orderly manner(for event based scenarios)</li>
+    </ol>
+    <h2>Delegate modes</h2>
+    <ul>
+        <li>synchronous - </li>
+        <li>asynchronous - calling delegates using BeginInvoke() & EndInvoke()</li>
+        <li>after calling BeginInvoke() the control goes to delegate method asynchronously</li>
+        <li>IAsyncResult has members- AsyncState, AsyncWaitHandle, IsCompleted</li>
+    </ul>
+    <h2>Covariance (flexibility in return type)</h2>
+    <li>allows the original method to have derived type of the delegate return type</li>
+    <code>
+        shape &#60- Rectangle <br>
+        shape &#60- Circle <br> <br>
+        public delegate Shape MyDlgt(); <br>
+        public Rectangle MyMethod(){  } <br>
+        MyDlgt obj= MyMethod;
+    </code>
+    <h2>Contravariance (flexibility in parameters)</h2>
+    <li>original method can have parameters with Parent type of return type of delegate parameter type</li>
+    <li>like one of delegate argument is of type Rectangle <br>then original method can have Shape as it's parameter type</li>
+    <h2>Anonymous methods using delegates</h2>
+    <ul>
+        <li>
+            <code>
+                public delegate void MyDelegate(int n); <br>
+                ...... <br>
+                MyDelegate obj = delegate( int n){ <br>
+                    ///body; <br>
+                    ///body; <br>
+                };
+            </code>
+        </li>
+       <li>this Anonymous function canbe used anywhere </li> 
+        
+    </ul>
 </body>
 </html>
