@@ -661,7 +661,126 @@
             </code>
         </li>
        <li>this Anonymous function canbe used anywhere </li> 
-        
     </ul>
+    <hr>
+    <h1>XML</h1>
+    <ul>
+        <li>contains structured data encapsulated in user-defined tags</li>
+        <li>tree structure with root, child nodes</li>
+        <li>xml declaration <br>
+            <code>&#60?xml version="1.0" encoding="UTF-8" standalone="no" ?&#62</code>
+        </li>
+        <li><code>&#60myElement&#62 data inside myelement &#60/myElement&#62</code></li>
+        <li>attribute provide additional info about the element they belong to</li>
+        <li><code>&#60myElement id="1001"&#62
+            Ashok
+            &#60/myElement&#62</code></li>
+        <li>opening & closing tags should match (case-sensitive)</li>
+        <li>Webservices SOAP, WSDL, UDDI are based on XML</li>
+    </ul>
+    <h2>validating XML</h2>
+    <ul>
+        <li>Document Type Definition</li>
+        <li>XML Schema Definition</li>
+        <li>based on validity, XML docs types are <br>1. well-formed <br>2. broken <br>3.valid</li>
+    </ul>
+    <h2>XSD</h2>
+    <ul>
+        <li>uses XMl syntax</li>
+        <li>provides datatypes, namespaces & is extensible</li>
+        <li>&#60xs:attribute name="attribute_name" type="xs:data_type" /&#62</li>
+        <li>
+            <code>
+                &#60xs:element name="person"&#62 <br>
+                    &#60xs:complexType&#62 <br>
+                        &#60xs:sequence&#62<br>
+                            &#60xs:element name="id" type="xs:int" /&#62<br>
+                            &#60xs:element name="name" type="xs:string" /&#62<br>
+                            &#60xs:element name="age" type="xs:int" /&#62<br>
+                        &#60/xs:sequence&#62<br>
+                    &#60/xs:complexType&#62<br>
+                &#60/xs:element&#62<br>
+            </code>
+        </li>
+        <li>XML elements- simple & complex</li>
+    </ul>
+    <hr>
+    <h1>JSON</h1>
+    <ul>
+        <li>concise data, supports arrays(xml do not)</li>
+        <li>because of JS objects, data is ready to use i.e, easily parsed</li>
+        <li>datatypes: <br>
+            <ol>
+                <li>number</li>
+                <li>string</li>
+                <li>boolean</li>
+                <li>object {}</li>
+                <li>array []</li>
+                <li>null</li>
+            </ol>
+        </li>
+    </ul>
+    <hr>
+    <h1>Serialization</h1>
+    <ul>
+        <li>serialize- object to stream</li>
+        <li>deserialize- stream to object</li>
+        <li>.net supports binary, xml, json Serializations</li>
+    </ul>
+    <h2>XML serialization(XmlSerializer)</h2>
+    <ul>
+        <li><span>System.Xml.Serialization</span></li>
+        <li>Serialize(stream, object)</li>
+        <li>
+            <code>
+                XmlSerializer srzr = new XmlSerializer(typeof(Employee)); <br>
+                srzr.Serialize(file, lst); <br>
+            </code>
+        </li>
+        <li>Deserialize(stream)</li>
+        <li>
+            <code>
+                XmlSerializer srzr= new XmlSerializer(typeof(Employee)); <br>
+                Employee emp = (Employee) srzr.Deserialize(file);
+            </code>
+        </li>
+    </ul>
+    <h2>JSON serialization(DataContractJsonSerializer)</h2>
+    <ul>
+        <li><span>System.Runtime.Serialization.Json</span></li>
+        <li>WriteObject(stream, object)</li>
+        <li></li>
+        <li>ReadObject(stream)</li>
+    </ul>
+    <h2>customizing XML serialization</h2>
+    <ul>
+        <li>XmlRoot - sets as root element <br>
+        <code>[XmlRoot( ElementName="name to be in xml file")]</code>
+        </li>
+        <li>XmlElement - converts to element during serialization <br>
+        <code>[XmlElement( ElementName="element tag name")]</code>
+        </li>
+        <li>XmlAttribute - converts to tag attibute during serialization <br>
+        <code>[XmlAttribute( AttributeName= "name of attribute")]</code>
+        </li>
+        <li>XmlIgnore - ignore this member during serialization <br>
+        <code>[XmlIgnore]</code>
+        </li>
+    </ul>
+    <h2>customizing JSON serialization</h2>
+    <ul>
+        <li>DataContract - specifes a class can be serialized <br>
+        <code>[DataContract]</code> <br>
+        <code>public class Employee{}</code> <br>
+        </li>
+        <li>DataMember - specifies a property to be serialized <br>
+        <code>
+            [DataMember(Name="name to be used in json file")] <br>
+            public int EmpId{ get; set;}; 
+        </code>
+        </li>
+        <li>IgnoreDataMember - ignores during serialization</li>
+    </ul>
+    
 </body>
 </html>
