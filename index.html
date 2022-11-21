@@ -781,6 +781,177 @@
         </li>
         <li>IgnoreDataMember - ignores during serialization</li>
     </ul>
-    
+    <hr>
+    <h1>Other C# concepts</h1>
+    <h2>Iterators</h2>
+    <ul>
+        <li>methods/read-only accessors</li>
+        <li>extends IEnumerable & define GetEnumerator() method</li>
+        <li>yield return - to return vales</li>
+        <li>yield break - to end iteration</li>
+    </ul>
+    <a href="./assets/codes/iterators.cs">Iterators code</a>
+    <h2>Partial types</h2>
+    <ul>
+        <li>class body can be divided & place in seperate files</li>
+        <li>partial class files must be in same namespace</li>
+        <li><code>partial class MyClass{  }</code></li>
+    </ul>
+    <h2>Nullable types</h2>
+    <ul>
+        <li>can store null values (by default c# types cannot)</li>
+        <li><code>Nullable&#60type&#62 var_name;</code></li>
+        <li><code>type? var_name;</code></li>
+        <li>System.Nullable.GetValueOrDefault() - returns value,<br> returns default value if it contains null value</li>
+        <li>var_name.Value - returns value, <br>throws exception if has null value</li>
+        <li>var_name.HasValue - return true if has a value<br> returns false if has null</li>
+    </ul>
+    <h2>Global namespace qualifier</h2>
+    <ul>
+        <li>global:: is used to access classes outside a namespace i.e, in global scope</li>
+        <li>
+            <code>
+                class MyClass{ } <br>
+                namespace MyNameSpace{ <br>
+                    class Myclass{ } <br>
+                } <br>
+                MyNameSpace.MyClass(); <br>
+                global::MyClass();
+            </code>
+        </li>
+    </ul>
+    <h2>Inline warnings</h2>
+    <ul>
+        <li>#pragma warning disable --warning code if any--</li>
+        <li>#pragma warning restore</li>
+    </ul>
+    <h2>Extension methods</h2>
+    <ul>
+        <li>to provide custom extension methods to classes, types etc.</li>
+        <li>only static methods inside static classes should be used</li>
+        <li><span>this</span> keyword is mandatory in method argument</li>
+    </ul>
+    <h2>var type (compile time type checking)</h2>
+    <ul>
+        <li>implicitly typed variables</li>
+        <li>type of value cannot be changed once other datatype is assigned</li>
+        <li>must be initialized while declared</li>
+        <li>var a=10; <br>a="ashok"; //error</li>
+    </ul>
+    <h2>dynamic type (runtime type checking)</h2>
+    <ul>
+        <li>like var type</li>
+        <li>datatype of data beign assigning can be changed during runtime</li>
+        <li>dynamic a=10; <br>a="ashok"; //allowed</li>
+    </ul>
+    <h2>Anonymous types</h2>
+    <ul>
+        <li>no type to the data is specified after <span>new</span> keyword</li>
+        <li>
+            <code>
+                var emp = new { empId = 101, empName = "ashok" }; <br>
+                Console.WriteLine(emp.empId); <br>
+                Console.WriteLine(emp.empName); <br>
+            </code>
+        </li>
+    </ul>
+    <h2>Object initializer</h2>
+    <li>new Employee{ EmpId=101, EmpName="ashok"}</li>
+    <hr>
+    <h1>Multi-Threading</h1>
+    <li>threads(light weight process) & processes(one contains many threads)</li>
+    <li>context switching</li>
+    <h2>Thread class (System.Threading)</h2>
+    <ul>
+        <li><span>methods</span></li>
+        <li>Start()</li>
+        <li>Sleep(int interval)</li>
+        <li>Abort()</li>
+        <li>Join()</li>
+        <li>Suspend()</li>
+        <li>Resume()</li>
+    </ul>
+    <ul>
+        <li><span>properties</span></li>
+        <li>CurrentThread</li>
+        <li>IsAlive</li>
+        <li>Priority</li>
+        <li>ThreadState</li>
+    </ul>
+    <h2>Implementing Multi-Threading</h2>
+    <ul>
+        <li>using "ThreadStart" delegate</li>
+        <ul>
+            <li>
+                <code>
+                    ThreadStart dlgt = new ThreadStart(Child.MyMethod); <br>
+                    Thread th = new Thread(dlgt); <br>
+                    th.Start(); <br>
+                </code>
+            </li>
+            <li>
+                <code>
+                    th.Start(); <br>
+                    th.Join(); //takes control to the thread
+                </code>
+            </li>
+        </ul>
+        <li>using "ThreadPool" class</li>
+        <ul>
+            <li>directly- using ThreadPool.QueueUserWorkItem</li>
+            <li>indirectly- using async methods Stream.BeginRead(), BeginInvoke() </li>
+        </ul>
+    </ul>
+    <h2>ThreadPriority</h2>
+    <ul>
+        <li>ThreadPriority enum defines priority level constants</li>
+        <li><code>myThread.Priority= ThreadPriority.Normal</code></li>
+        <li>Lowest, Highest, Normal, BelowNormal, AboveNormal</li>
+    </ul>
+    <span>race condition is avoided using lock(object){ //code to be locked }</span>
+    <h2>Deadlocks</h2>
+    <ul>
+        <li>two threads blocked forever, waiting for each other</li>
+    </ul>
+    <hr>
+    <h1>Parallel programming</h1>
+    <h2>Task (System.Threading.Tasks)</h2>
+    <ul>
+        <li>Task is an asynchronous operation</li>
+        <li>provides APIs called Task Parallel Library (TPL)</li>
+        <li>two generic delegates are used by Tasks</li>
+        <li>Action delegate</li>
+        <ul>
+            <li>stores ref of methods that takes <span>1 argument & returns nothing</span></li>
+            <li><code>public delegate void Action&#60T&#62 (T input)</code></li>
+        </ul>
+        <li>Function delegate</li>
+        <ul>
+            <li>stores ref of methods that takes <span>1 argument & return a value</span> specified by generic parameter</li>
+            <li><code>public delegate TResult Func&#60T, out TResult&#62(T input)</code></li>
+        </ul>
+    </ul>
+    <h2>Creating tasks</h2>
+    <ul>
+        <li><code>Task myTask= new Task(myMethod); <br>
+            myTask.Start();
+        </code></li>
+        <li><code>Task myTask= new Task( <br>
+                ()=> Console.WriteLine("msg from task") <br>
+            ); //task creation using lambda
+        </code></li>
+    </ul>
+    <h2>Task scheduler</h2>
+    <li>responsible for deciding when to run tasks</li>
+    <h2>Task.Status</h2>
+    <ul>
+        <li>Created - task initialized but not scheduled</li>
+        <li>WaitingToRun</li>
+        <li>RanToCompletion</li>
+        <li>Cancelled</li>
+        <li>Faulted</li>
+    </ul>
+    <h2>Data returned from a Task</h2>
+    <li>stored in myTask.Result</li>
 </body>
 </html>
