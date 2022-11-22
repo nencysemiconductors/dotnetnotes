@@ -15,6 +15,8 @@
             <li><a href="#">SQL server</a></li>
         </ul>
     </nav>
+    <a href="./assets/codes/notes.txt">SQL primers notes</a>
+    <a href="./assets/codes/ssms.txt">SSMS practice commands</a>
     <h1>SQL server</h1>
     <ul>
         <li>developed my Microsoft</li>
@@ -27,6 +29,97 @@
         <li><span>msdb</span>: sql server agent uses this to schedule jobs & alerts</li>
         <li><span>tempDB</span>: stores data temporarily, lost when conn is closed</li>
     </ol>
-
+    <h2>Data types</h2>
+    <ol>
+        <li>int</li>
+        <li>Decimal(p, s) - p no.of digits & s no.of digits after decimal point</li>
+        <li>numeric(p, s) - </li>
+        <li>float</li>
+        <li>real (double precision than float)</li>
+        <li>char (fixed length non-unicode)</li>
+        <li>varchar</li>
+        <li>nchar (fixed length unicode)</li>
+        <li>nvarchar</li>
+        <li>datetime</li>
+        <li>money</li>
+        <li>small money</li>
+    </ol>
+    <h2>Constraints</h2>
+    <ol>
+        <li>NOT NULL</li>
+        <li>PRIMARY KEY <br>composite primary key- two columns together made primary key</li>
+        <li>UNIQUE</li>
+        <li>FOREIGN KEY</li>
+        <li>CHECK</li>
+        <li>Default - used to provide default values to columns if user don't provide value for it</li>
+    </ol>
+    <h1>DDL (Create, Alter, Drop, (Truncate))</h1>
+    <h2>Identity property</h2>
+    <ul>
+        <li>only one Identity column is allowed</li>
+        <li>auto increments by 1</li>
+        <li>should not give Identity column value during insert</li>
+        <li><code>IDENTITY( SEED, increment/decrement) , default values are IDENTITY(1,1)</code></li>
+        <li><code>CREATE TABLE Employee (empId INT IDENTITY(2,1), ....)</code></li>
+    </ul>
+    <h2>Limiting rows retrieved by SELECT</h2>
+    <ul>
+        <li>WHERE clause</li>
+        <ul>
+            <li>relational operators &#60, &#62, &#60=, &#62=, =, &#60&#62(<span>not equal</span>)</li>
+            <li>logical operators AND, OR, NOT</li>
+            <li>keywords BETWEEN, LIKE, IN</li>
+        </ul>
+        <li>between - boundary values are inclusive</li>
+        <li>in - to compare with a list of words</li>
+        <li>like - % represents zero or more characters <br> _ represents exactly one char to match</li>
+    </ul>
+    <h1>JOINS</h1>
+    <ol>
+        <li>Inner join(equi join- combined based on a common column)</li>
+        <li>left outer join</li>
+        <li>right outer join</li>
+        <li>full outer join</li>
+        <li>cross join (cartesian)</li>
+        <li>self join</li>
+    </ol>
+    <code>
+        SELECT t1.column1, t2.column2 <br>
+            FROM Table1 t1 &#60join statement&#62 ON &#60condition&#62 <br>
+    </code>
+    <ul>
+        <li>no on clause condition for cross join</li>
+    </ul>
+    <h2>Self join</h2>
+    <ul>
+        <li>consider employee table, we need to retrieve employee & their corrosponding manager</li>
+        <li>managers are also employees residing in the same table</li>
+        <li>now self join is used</li>
+        <li><code>SELECT E.ename, M.ename <br>  
+            FROM Employee E <br>
+            INNER JOIN Employee M <br>
+            ON E.managerId=M.empId
+        </code></li>
+    </ul>
+    <h1>Variables</h1>
+    <ul>
+        <li>local vars @</li>
+        <li>global vars @@ (can't be created by us)</li>
+    </ul>
+    <h2>Global variables</h2>
+    <ul>
+        <li>@@ERROR - error number of last sql statement</li>
+        <li>@@IDENTITY - gives Identity value which is last inserted</li>
+        <li>@@ROWCOUNT - no.of affected rows by last query</li>
+        <li>@@SERVERNAME</li>
+        <li>@@LANGUAGE</li>
+    </ul>
+    <h2>Exception handling</h2>
+    <ul>
+        <li>TRY <br>
+            BEGIN TRY END TRY <br>
+            CATH br</li> <br>
+            
+    </ul>
 </body>
 </html>
