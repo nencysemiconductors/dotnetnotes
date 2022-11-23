@@ -13,6 +13,7 @@
             <li><a href="./index.html">C#</a></li>
             <li><a href="./advC.html">Advanced C#</a></li>
             <li><a href="#">SQL server</a></li>
+            <li><a href="./adonetLinq.html">ADO.NET & LINQ</a></li>
         </ul>
     </nav>
     <a href="./assets/codes/notes.txt">SQL primers notes</a>
@@ -116,10 +117,75 @@
     </ul>
     <h2>Exception handling</h2>
     <ul>
-        <li>TRY <br>
-            BEGIN TRY END TRY <br>
-            CATH br</li> <br>
-            
+        <li>
+            BEGIN TRY ... END TRY <br>
+            BEGIN CATCH ... END CATCH
+        </li>
     </ul>
+    <h1>Stored Procedures</h1>
+    <ul>
+        <li>pre-compiled object containing set of SQL statements treated as a single unit</li>
+        <li>system stored procedures & user defined stored procedures</li>
+        <li>can return only INTEGER values using Return statement</li>
+        <li>
+            <code>
+                CREATE PROC(EDURE) spGetEmployees  <br>
+                AS <br>
+                BEGIN <br>
+                    &emsp;SELECT * FROM Employee; <br>
+                END <br>
+                GO <br>
+            </code>
+            <i>EXEC(UTE) spGetEmployees</i>
+        </li>
+        <li>
+            <code>
+                CREATE PROCEDURE spGetEmployee(@empID int) <br>
+                AS <br>
+                BEGIN <br>
+                &emsp;SELECT * FROM Employee WHERE empId=@empID; <br>
+                END <br>
+                GO <br>
+            </code>
+            <i>EXEC spGetEmployee 101</i>
+        </li>
+    </ul>
+    <h2>OUT parameters in SP</h2>
+    <code>
+        CREATE PROC spADD( @num1 INT, @num2 INT, @result INT OUTPUT) <br>
+        EXEC spADD 10, 20, @res OUTPUT;
+    </code>
+    <ul>
+        <li>OUTPUT parameters can be of any type varchar, date, char, datetime etc.,</li>
+    </ul>
+    <h1>VIEWS</h1>
+    <ul>
+        <li>Virtual tables defined by SELECT query</li>
+        <li>operations done on VIEWS will make changes on tables on which the view is created</li>
+        <li>simple views - made from a single table</li>
+        <li>complex views - made from multiple tables</li>
+        <li>
+            <code>
+                CREATE VIEW vw_MyTableView AS SELECT * FROM Employee <br>
+                <br>
+                SELECT * FROM vw_MyTableView; <br>
+                DELETE FROM vw_MyTableView WHERE eid=103; <br>
+            </code>
+        </li>
+    </ul>
+    <h1>Transactions</h1>
+    <ul>
+        <li>sequence of sql statements performed as a single unit</li>
+        <li>COMMIT - ensures changes in the database are made permanent</li>
+        <li>ROLLBACK - reverts all changes from the begining of transaction in case of errors</li>
+        <li>properties of Transaction (ACID)</li>
+        <ol>
+            <li>Atomicity</li>
+            <li>Consistency</li>
+            <li>Isolation</li>
+            <li>Durability</li>
+        </ol>
+    </ul>
+
 </body>
 </html>

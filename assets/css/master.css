@@ -31,7 +31,16 @@ b{
     color: orange;
 }
 table{
-    width: 350px;
+    border-color: #000;
+    min-width: 400px;
+
+}
+th{
+    font-weight:900;
+}
+td{
+
+    min-width: 200px;
 }
 code{
     font-size: 1.3em;
